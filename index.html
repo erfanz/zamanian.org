@@ -1,19 +1,35 @@
 <!DOCTYPE html>
 <html>
 <head>
+
 </head>
 <body>
 <h1>Goals for 1393</h1>
 <p>[ ] Run 900km (equal to Tehran-Mashhad)</p>
+Progress: <span id="ph-run"></span>km!
+<br />
+<progress id="progress-run" value="42" max="100" style="width:300px">
+</progress>
 <p>[ ] Complete project 365 (taking one photo each day of the year)</p>
 <p>[ ] Learn a new language and finish an elementary story book in a new language</p>
 <p>[ ] Piano (to be completed)</p>
 <p>[ ] Travel to at least two new contries (or states, if leaving the country is imposible)</p>
 <p>[ ] 7000 push-ups and 7000 sit-ups</p>
+Progress: <span id="ph-pushups"></span> pushups and <span id="ph-situps"></span> situps! 
+<br />
+<progress id="progress-pushAndSit" value="42" max="100" style="width:300px">
+</progress>
 
-<a href="http://m.maploco.com/details/7b34javp">
-  <img style="border:0px;" src="http://www.maploco.com/vmap/7619029.png" alt="Locations of Site Visitors" title="Locations of Site Visitors"/>
-</a>    
+<script>
+  run=0;
+  pushup=70;
+  situp=35;
+  document.getElementById("ph-run").innerHTML = run;
+  document.getElementById("ph-pushups").innerHTML = pushup;
+  document.getElementById("ph-situps").innerHTML = situp;
   
+  document.getElementById("progress-run").setAttribute("value", run);
+  document.getElementById("progress-pushAndSit").setAttribute("value", ((pushup+situp) / 14000) * 100);
+</script>  
 </body>
 </html>
