@@ -21,14 +21,14 @@ Progress: <span id="ph-pushups"></span> pushups and <span id="ph-situps"></span>
 </progress>
 
 <script>
-  run=0;
-  pushup=70;
-  situp=35;
+  run=6.5;
+  pushup=90;
+  situp=55;
   document.getElementById("ph-run").innerHTML = run;
   document.getElementById("ph-pushups").innerHTML = pushup;
   document.getElementById("ph-situps").innerHTML = situp;
   
-  document.getElementById("progress-run").setAttribute("value", run);
+  document.getElementById("progress-run").setAttribute("value", (run/900) * 100);
   document.getElementById("progress-pushAndSit").setAttribute("value", ((pushup+situp) / 14000) * 100);
 </script>  
 </body>
