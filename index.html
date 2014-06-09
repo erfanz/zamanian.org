@@ -10,6 +10,10 @@ Progress: <span id="ph-run"></span>km!
 <br />
 <progress id="progress-run" value="42" max="100" style="width:300px">
 </progress>
+</p>
+<progress id="expected-run" value="0" max="100" style="width:300px">
+</progress>
+
 <p>[ ] Complete project 365 (taking one photo each day of the year)</p>
 <p>[ ] Learn a new language and finish an elementary story book in a new language</p>
 <p>[ ] Piano (to be completed)</p>
@@ -19,17 +23,29 @@ Progress: <span id="ph-pushups"></span> pushups and <span id="ph-situps"></span>
 <br />
 <progress id="progress-pushAndSit" value="42" max="100" style="width:300px">
 </progress>
+</p>
+<progress id="expected-pushAndSit" value="0" max="100" style="width:300px">
+</progress>
+
 
 <script>
   run=8.5;
-  pushup=285;
-  situp=155;
+  pushup=465;
+  situp=325;
   document.getElementById("ph-run").innerHTML = run;
   document.getElementById("ph-pushups").innerHTML = pushup;
   document.getElementById("ph-situps").innerHTML = situp;
   
   document.getElementById("progress-run").setAttribute("value", (run/900) * 100);
   document.getElementById("progress-pushAndSit").setAttribute("value", ((pushup+situp) / 14000) * 100);
+  
+  passedDays = daydiff(new Date("March 21, 2014"), new Date());	// daysPassedSinceEid
+  document.getElementById("expected-run").setAttribute("value", passedDays*100/365);
+  document.getElementById("expected-pushAndSit").setAttribute("value", passedDays*100/365);
+  
+  function daydiff(first, second) {
+    return (second-first)/(1000*60*60*24)
+  }
 </script>  
 </body>
 </html>
