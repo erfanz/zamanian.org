@@ -744,3 +744,26 @@ img::-moz-selection {
 body {
   webkit-tap-highlight-color: #fed136;
 }
+.icon-list li {
+  padding: 0 0 5px 20px;
+  display: block;
+  position: relative;
+}
+.icon-list li:before {
+  font-family: 'Glyphicons Halflings';
+  position: absolute;
+  left: 0px;
+  top:3px;
+  font-size:80%
+}
+.chevron-right li:before {
+ content: '\e080';
+}
+
+.checkmark li:before {
+ content: '\e067';
+}
+
+.arrow-right li:before {
+ content: '\e092';
+}
