@@ -1,0 +1,13 @@
+.img-circle {
+    border-radius: 50%;
+}
+
+.center {
+  margin: auto;
+/*  width: 100%;*/
+  text-align: center;
+}
+
+.profile-pic {
+	display: block;
+}
