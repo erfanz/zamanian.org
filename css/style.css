@@ -1,0 +1,19 @@
+.img-circle {
+    border-radius: 50%;
+}
+
+.center {
+  margin: auto;
+  width: 100%;
+  max-width: 400px;
+  text-align: center;
+}
+
+.profile-pic {
+	display: block;
+}
+
+.menu-item {
+    display: inline-block;
+    width: 30%;
+}
