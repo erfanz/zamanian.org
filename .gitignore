@@ -1,2 +1,5 @@
 # mac-specific files 
 *.DS_Store
+
+# jekyll compiled _site folder
+_site/*
