@@ -23,11 +23,11 @@
 	display: block;
 }
 
-.menu-item {
-    display: inline-block;
-    width: 30%;
+#footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
 }
-
 
 
 nav.topmenu {

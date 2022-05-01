@@ -3,26 +3,39 @@ title: بانو صدیقه امین التجاری
 permalink: /sedigheh.html
 layout: profile
 ---
+
+<style>
+	.anim {
+		opacity: 0;
+		animation-name: fadein;
+		animation-fill-mode: forwards;	   
+	}
+	#eshgh {
+		animation-delay: 0s;
+		animation-duration: 2s;
+	}
+	#name {
+		animation-delay: 1s;
+		animation-duration: 2s;
+	}
+	#pic {
+		animation-delay: 3s;
+		animation-duration: 3s;
+	}
+	#years {
+		animation-delay: 5s;
+		animation-duration: 2s;
+	}
+	
+	@keyframes fadein {
+		from { opacity: 0}
+		to   { opacity: 1}
+	}
+</style>
+	
 <div id="info" class="center">
-	<img src="/assets/img/sedigheh/eshghe-jan.jpg" class="center profile-pic" style="width: 40%;">
-	<img src="/assets/img/sedigheh/banoo-amintojari.jpg" class="center profile-pic"  style="width: 70%;">
-	<img src="/assets/img/sedigheh/sedigheh-profile.jpg" class="center profile-pic" alt="mom's photo"  style="width: 70%;">
-	<img src="/assets/img/sedigheh/life-years.jpg" class="center profile-pic" style="width: 40%; padding-top: 20px;">
+	<img id="eshgh" class="anim" src="/assets/img/sedigheh/eshghe-jan.jpg" class="center profile-pic" style="width: 40%;">
+	<img id="name" class="anim" src="/assets/img/sedigheh/banoo-amintojari.jpg" class="center profile-pic"  style="width: 70%;">
+	<img id="pic" class="anim" src="/assets/img/sedigheh/sedigheh-profile.jpg" class="center profile-pic" alt="mom's photo"  style="width: 70%;">
+	<img id="years" class="anim" src="/assets/img/sedigheh/life-years.jpg" class="center profile-pic" style="width: 40%; padding-top: 20px;">
 </div>
-<!-- <div class="center" style="direction: rtl;">
-    <span class="menu-item">
-        <a href= "/sedigheh/enter-gallery.html">
-            عکس
-        </a>
-    </span>
-    <span class="menu-item">
-        <a href="/sedigheh/doa.html">
-            ادعیه
-        </a>
-    </span>
-    <span class="menu-item">
-        <a href="/sedigheh/divar.html">
-            دیوار نوشته
-        </a>
-    </span>
-</div> -->
