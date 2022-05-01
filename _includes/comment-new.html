@@ -1,0 +1,29 @@
+<h1 class="form-title">
+	ثبت نظر
+</h1>
+<div class = "align-center" style="width: 300px; direction: rtl;">
+	<form method="POST" class="contact-form" id="comment-form" action="https://mystaticmaninstance.herokuapp.com/v3/entry/github/erfanz/zamanian.org/master/wallposts">	
+	    <input name="options[redirect]" type="hidden" value="www.zamanian.org/sedigheh/thanks-for-comment.html">
+    <input name="options[slug]" type="hidden" value="{{ page.slug }}">
+		
+		<div class="form-field">
+			<input name="fields[name]" id="name" class="inputf user-text js-input" autocomplete="off" type="text">
+			<label class="label" for="name">
+				نام (اختیاری)
+			</label>
+		</div>
+
+		<div class="form-field">
+			<textarea name="fields[message]" id="message" class="textf user-text js-input" rows="4" cols="50" autocomplete="off"></textarea>
+			<label class="label" for="message">
+				پیام
+			</label>	  
+		</div>
+		<div class="form-field align-center">
+		    <button type="submit" class="submit-btn">
+		    	ثبت دل نوشته
+		    </button>
+		</div>
+	</form>
+
+</div>

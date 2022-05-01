@@ -1,0 +1,164 @@
+<!DOCTYPE html> 
+<html lang="fa-IR">
+<head>
+    <title> ورود به گالری صدیقه</title>
+	<meta name="viewport" content="width=device-width,height=device-height,initial-scale=1.0"/>
+	<link rel="stylesheet" type="text/css" media="all" href="/assets/css/style.css">
+	<link rel="stylesheet" type="text/css" media="all" href="/assets/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" media="all" href="/assets/css/comments.css">
+	<link rel="stylesheet" type="text/css" media="all" href="/assets/css/form.css">
+	<script src="/assets/js/persian-date.min.js" type="text/javascript"></script>
+	
+	<script>
+		function set_selected_menu(selected_class_name) {
+			elem = document.getElementById('selected-menu');
+			elem.className = ''; // remove all classes
+			elem.classList.add("animation")
+			elem.classList.add(selected_class_name)			
+		}
+	</script>
+</head>
+<body>
+	<div>
+		
+<nav class="topmenu">
+	<a href="/sedigheh.html">
+		خانه
+	</a>
+	<a href="/sedigheh/divar.html">
+		دیوار نوشته
+	</a>
+	<a href="/sedigheh/doa.html">
+		ادعیه
+	</a>
+	<a href="/sedigheh/enter-gallery.html">
+		گالری
+	</a>
+	<div id="selected-menu" class="animation start-home"></div>
+</nav>
+	</div>
+	<div>
+		<style>
+    body {
+        background-image: url('/assets/img/grunge_patterns.jpg');
+        background-attachment: fixed;
+        color: #333;
+    }
+
+    .box {
+        border-radius: 3px;
+        background: rgba(101, 101, 101, 0.7); margin: auto; padding: 12px;
+    }
+
+    .lightbox {
+        zoom: 1.5;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        text-align: center;
+        margin: auto;
+
+    }
+
+    div.horizontal {
+        display: flex;
+        justify-content: center;
+        height: 100%;
+    }
+
+    div.vertical {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        width: 100%;
+    }
+
+    ::-webkit-input-placeholder {
+        color: #955;
+        text-align: center;
+    }
+
+    ::-moz-placeholder {
+        color: #955;
+        text-align: center;
+    }
+
+    :-ms-input-placeholder {
+        color: #955;
+        text-align: center;
+    }
+
+</style>
+	
+<script>
+	// change selected menu item to Doa
+	set_selected_menu("start-gallery")
+</script>
+	
+<div id="loginbox" class="lightbox" >
+    <div class="horizontal">
+        <div class="vertical">
+            <div class="box">
+                <input style="margin: 16px; text-align: center;" id="password" type="password" placeholder="رمز عبور را وارد کنید" readonly 
+onfocus="this.removeAttribute('readonly');"/> <br />
+                <button id="loginbutton" type="button">
+                    ورود
+                </button>
+                <p id="wrongPassword" style="display: none">
+                    رمز ورود، نادرست است
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<script type="text/javascript" src="/assets/js/jquery-3.6.0.min.js"></script>
+<script type="text/javascript" src="/assets/js/sha1.js"></script>
+<script type="text/javascript">
+    "use strict";
+    function loadPage(pwd) {
+
+        var hash= pwd;
+        hash= Sha1.hash(pwd);
+        var url= "/assets/gallery/" + hash + "/sedigheh-gallery.html";
+
+        $.ajax({
+            url : url,
+            dataType : "html",
+            success : function(data) {
+
+                window.location= url;
+
+            },
+            error : function(xhr, ajaxOptions, thrownError) {
+
+
+                parent.location.hash= hash;
+
+                //$("#wrongPassword").show();
+                $("#password").attr("placeholder","رمز نادرست");
+                $("#password").val("");
+            }
+        });
+    }
+
+    $("#loginbutton").on("click", function() {
+        loadPage($("#password").val());
+    });
+    $("#password").keypress(function(e) {
+        if (e.which == 13) {
+
+            loadPage($("#password").val());
+        }
+    });
+    $("#password").focus();
+</script>
+
+
+	</div>
+</body>
+</html>

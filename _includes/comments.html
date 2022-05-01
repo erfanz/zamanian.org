@@ -1,0 +1,31 @@
+{% assign comments = site.data.comments | sort %}
+
+<script>
+	function unix_ts_to_jalali(timestamp) {
+		timestamp = timestamp;
+		mypersiandate = new persianDate.unix(timestamp).format("dddd D MMMM YYYY, h a");
+		return mypersiandate;
+	}
+</script>
+
+{% for comment in comments reversed %}
+  {% assign commentData = comment[1] %}
+    <div class="d-flex justify-content-center py-2" style="direction: rtl;">
+        <div class="second py-2 px-2" style="text-align: right;">
+			<span class="text1" style="direction: rtl;">
+				{{ commentData.message }}
+			</span>
+            <div class="d-flex justify-content-between py-1 pt-2">
+                <div><img src="https://i.imgur.com/AgAC1Is.jpg" width="18"><span class="text2">{{ commentData.name }}</span></div>
+                <div><span class="text3" id="date-{{ forloop.index }}">{{ commentData.date | date_to_long_string }}</span></div>
+				<script>
+					document.getElementById('date-{{ forloop.index }}').innerHTML = unix_ts_to_jalali({{ commentData.date }});
+				</script>
+            </div>
+        </div>
+    </div>
+{% endfor %}
+
+<!-- let mydate = new Date(timestamp);
+let mypersiandate = mydate.toLocaleDateString('fa-IR');
+console.log(mypersiandate); -->

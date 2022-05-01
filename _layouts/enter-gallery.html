@@ -1,0 +1,59 @@
+---
+layout: default
+---
+<style>
+    body {
+        background-image: url('/assets/img/grunge_patterns.jpg');
+        background-attachment: fixed;
+        color: #333;
+    }
+
+    .box {
+        border-radius: 3px;
+        background: rgba(101, 101, 101, 0.7); margin: auto; padding: 12px;
+    }
+
+    .lightbox {
+        zoom: 1.5;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        text-align: center;
+        margin: auto;
+
+    }
+
+    div.horizontal {
+        display: flex;
+        justify-content: center;
+        height: 100%;
+    }
+
+    div.vertical {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        width: 100%;
+    }
+
+    ::-webkit-input-placeholder {
+        color: #955;
+        text-align: center;
+    }
+
+    ::-moz-placeholder {
+        color: #955;
+        text-align: center;
+    }
+
+    :-ms-input-placeholder {
+        color: #955;
+        text-align: center;
+    }
+
+</style>
+	
+{{ content }}
+

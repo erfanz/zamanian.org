@@ -1,0 +1,17 @@
+<html>
+    <head>
+        divar
+    </head>
+    <body>
+        mystaticmaninstance
+        
+        <form method="POST" action="https://mystaticmaninstance.herokuapp.com/v3/entry/github/erfanz/zamanian.org/master/wallposts">
+            <input name="options[redirect]" type="hidden" value="https://my-site.com">
+            <!-- e.g. "2016-01-02-this-is-a-post" -->
+            <input name="options[slug]" type="hidden" value="{{ page.slug }}">
+            <label><input name="fields[name]" type="text">Name</label>
+            <label><textarea name="fields[message]"></textarea>Message</label>
+            <button type="submit">Go!</button>
+        </form>
+    </body>
+</html>

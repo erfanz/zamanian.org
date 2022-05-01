@@ -1,0 +1,138 @@
+<!DOCTYPE html> 
+<html lang="fa-IR">
+<head>
+    <title> دیوار نوشته صدیقه</title>
+	<meta name="viewport" content="width=device-width,height=device-height,initial-scale=1.0"/>
+	<link rel="stylesheet" type="text/css" media="all" href="/assets/css/style.css">
+	<link rel="stylesheet" type="text/css" media="all" href="/assets/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" media="all" href="/assets/css/comments.css">
+	<link rel="stylesheet" type="text/css" media="all" href="/assets/css/form.css">
+	<script src="/assets/js/persian-date.min.js" type="text/javascript"></script>
+	
+	<script>
+		function set_selected_menu(selected_class_name) {
+			elem = document.getElementById('selected-menu');
+			elem.className = ''; // remove all classes
+			elem.classList.add("animation")
+			elem.classList.add(selected_class_name)			
+		}
+	</script>
+</head>
+<body>
+	<div>
+		
+<nav class="topmenu">
+	<a href="/sedigheh.html">
+		خانه
+	</a>
+	<a href="/sedigheh/divar.html">
+		دیوار نوشته
+	</a>
+	<a href="/sedigheh/doa.html">
+		ادعیه
+	</a>
+	<a href="/sedigheh/enter-gallery.html">
+		گالری
+	</a>
+	<div id="selected-menu" class="animation start-home"></div>
+</nav>
+	</div>
+	<div>
+		<script>
+	// change selected menu item to Doa
+	set_selected_menu("start-divar")
+</script>
+
+<div>
+	<div class="align-center">        
+		<h1 class="form-title">
+	ثبت نظر
+</h1>
+<div class = "align-center" style="width: 300px; direction: rtl;">
+	<form method="POST" class="contact-form" id="comment-form" action="https://mystaticmaninstance.herokuapp.com/v3/entry/github/erfanz/zamanian.org/master/wallposts">	
+	    <input name="options[redirect]" type="hidden" value="www.zamanian.org/sedigheh/thanks-for-comment.html">
+    <input name="options[slug]" type="hidden" value="">
+		
+		<div class="form-field">
+			<input name="fields[name]" id="name" class="inputf user-text js-input" autocomplete="off" type="text">
+			<label class="label" for="name">
+				نام (اختیاری)
+			</label>
+		</div>
+
+		<div class="form-field">
+			<textarea name="fields[message]" id="message" class="textf user-text js-input" rows="4" cols="50" autocomplete="off"></textarea>
+			<label class="label" for="message">
+				پیام
+			</label>	  
+		</div>
+		<div class="form-field align-center">
+		    <button type="submit" class="submit-btn">
+		    	ثبت دل نوشته
+		    </button>
+		</div>
+	</form>
+
+</div>
+
+	</div>
+	<div class="align-center" style="margin-top: 70px;">
+		<div class="align-center" style="margin-bottom: 20px; border-bottom: 2px solid black; width: 400px;">
+			دل نوشته های پیشین
+		</div>
+		<div>
+			
+
+<script>
+	function unix_ts_to_jalali(timestamp) {
+		timestamp = timestamp;
+		mypersiandate = new persianDate.unix(timestamp).format("dddd D MMMM YYYY, h a");
+		return mypersiandate;
+	}
+</script>
+
+
+  
+    <div class="d-flex justify-content-center py-2" style="direction: rtl;">
+        <div class="second py-2 px-2" style="text-align: right;">
+			<span class="text1" style="direction: rtl;">
+				تست دوم. این رو یه مقدار طولانی تر مینویسم تا اثر مطلب طولانی رو هم بفهمم. سلام بر هر دو عزیز. سلااام
+			</span>
+            <div class="d-flex justify-content-between py-1 pt-2">
+                <div><img src="https://i.imgur.com/AgAC1Is.jpg" width="18"><span class="text2">کیهان</span></div>
+                <div><span class="text3" id="date-1">30 April 2022</span></div>
+				<script>
+					document.getElementById('date-1').innerHTML = unix_ts_to_jalali(1651304192);
+				</script>
+            </div>
+        </div>
+    </div>
+
+  
+    <div class="d-flex justify-content-center py-2" style="direction: rtl;">
+        <div class="second py-2 px-2" style="text-align: right;">
+			<span class="text1" style="direction: rtl;">
+				برای تست
+			</span>
+            <div class="d-flex justify-content-between py-1 pt-2">
+                <div><img src="https://i.imgur.com/AgAC1Is.jpg" width="18"><span class="text2">erfan</span></div>
+                <div><span class="text3" id="date-2">29 April 2022</span></div>
+				<script>
+					document.getElementById('date-2').innerHTML = unix_ts_to_jalali(1651299623);
+				</script>
+            </div>
+        </div>
+    </div>
+
+
+<!-- let mydate = new Date(timestamp);
+let mypersiandate = mydate.toLocaleDateString('fa-IR');
+console.log(mypersiandate); -->
+
+		</div>
+	</div>
+<div>		
+
+	</div>
+</body>
+</html>
