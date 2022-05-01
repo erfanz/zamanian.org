@@ -29,9 +29,12 @@
     width: 100%;
 }
 
+.fa-text {
+	direction: rtl;
+}
+
 
 nav.topmenu {
-	direction: rtl; /* erfan */
 	margin: 27px auto 0;
 	position: relative;
 	width: 400px;

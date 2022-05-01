@@ -10,9 +10,9 @@
 
 {% for comment in comments reversed %}
   {% assign commentData = comment[1] %}
-    <div class="d-flex justify-content-center py-2" style="direction: rtl;">
+    <div class="fa-text d-flex justify-content-center py-2">
         <div class="second py-2 px-2" style="text-align: right;">
-			<span class="text1" style="direction: rtl;">
+			<span class="text1 fa-text">
 				{{ commentData.message }}
 			</span>
             <div class="d-flex justify-content-between py-1 pt-2">
