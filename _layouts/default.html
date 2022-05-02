@@ -19,11 +19,13 @@
 	</script>
 </head>
 <body>
-	<div>
-		{% include menu.html %}
-	</div>
-	<div style="margin-bottom: 30px;">
-		{{ content }}
-	</div>
+	<section id="page">
+		<div>
+			{% include menu.html %}
+		</div>
+		<section id="content">
+			{{ content }}
+		</section>
+	</section>
 </body>
 </html>

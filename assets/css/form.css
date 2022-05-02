@@ -1,13 +1,7 @@
-.align-center {
-	text-align: center;
-	margin: 0 auto;
-}
-
 .form-title {
 	text-align: center;
-	font-size: 28px;
+	font-size: 22px;
 	line-height: 38px;
-	padding-bottom: 22px;
 }
 
 .contact-form .form-field {
@@ -64,10 +58,14 @@
 
 .contact-form .submit-btn {
 	display: inline-block;
-	background-color: #000;
+	background-color: #30457c;
 	color: #fff;
 	font-size: 16px;
 	padding: 8px 16px;
 	border: none;
 	cursor: pointer;
+}
+
+.submit-btn {
+	border-radius: 30px;
 }
