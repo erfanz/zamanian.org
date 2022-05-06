@@ -10,10 +10,17 @@ layout: default
 </script>
 
 <div>
-	<div class="center fa-text">        
+    <div id="comment-click-div" class="center fa-text" style="display: block;">
+        <button id="comment-button" class="button" type="button">
+            برای ثبت دل نوشته ات، اینجا را کلیک کن.
+        </button>
+    </div>
+    
+    <div id="comment-new-div" class="center fa-text" style="display: none;">        
 		{% include comment-new.html %}
 	</div>
-	<div class="center" style="margin-top: 70px;">
+
+	<div id="comment-olds-div" class="center" style="margin-top: 70px;">
 		<div class="center" style="margin-bottom: 20px; border-bottom: 2px solid black; width: 400px; font-size: 20px; font-weight: bold;">
 			دل نوشته های پیشین
 		</div>
@@ -22,3 +29,12 @@ layout: default
 		</div>
 	</div>
 <div>		
+
+<script>
+    // when user clicks on the "leave comment" button,
+    // a new box appears to allow them to leave their comments
+    $("#comment-button").click(function() {
+        $("#comment-click-div").css('display', 'none');
+        $("#comment-new-div").show( 'slow' );
+    });
+</script>
