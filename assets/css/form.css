@@ -19,6 +19,7 @@
 	line-height: 26px;
 	font-weight: 400;
 }
+
 .inputf {
 	height: 36px;
 }
@@ -30,11 +31,11 @@
 	/* no boxes drawn around the selected field */
 /*	outline: none;*/
 }
-.contact-form .inputf:focus + .label, .contact-form .inputd.not-empty + .label {
+.contact-form .inputf:focus + .label, .contact-form .inputf:not(:placeholder-shown) + .label {
 	/* when a field is selected, it's label is moving upward */
 	transform: translateY(-30px);
 }
-.contact-form .textf:focus + .label, .contact-form .textf.not-empty + .label {
+.contact-form .textf:focus + .label, .contact-form .textf:not(:placeholder-shown) + .label {
 	/* when a field is selected, it's label is moving upward */
 	transform: translateY(-90px);
 }
