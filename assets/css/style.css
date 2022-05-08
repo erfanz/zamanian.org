@@ -44,6 +44,14 @@
 	direction: rtl;
 }
 
+/* for divs where I want to show a message to user */
+div.info-message {
+    background-color: #4c8b36;
+    color: aliceblue;
+    border-radius: 25px;
+    padding: 10px;
+}
+
 .button {
 	display: inline-block;
 	margin: 0;
