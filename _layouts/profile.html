@@ -16,13 +16,14 @@
 	</script>
 </head>
 <body>
-	<div>
-		{{ content }}
-	</div>
-	<div id="footer">
-		{% include menu.html %}
-	</div>
-	
+    <div style="background-image: url(assets/img/sedigheh/bg.png);">
+        <div>
+            {{ content }}
+        </div>
+        <div id="footer">
+            {% include menu.html %}
+        </div>
+    </div>	
 	<script>
 		// change selected menu item to Home
 		set_selected_menu("start-home")
