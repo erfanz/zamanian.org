@@ -5,29 +5,17 @@
     </head>
     <body>
         <div id="inputs">
-            <input id="inputFile" type="file" required />
+            <input id="inputFiles" type="file" multiple required />
             <br/>
             <input id="pass" type="text" placeholder="رمز مورد استفاده " required />
             <br/>
             <button onclick="encodeImage()">رمزنگاری کن</button>
         </div>
 
-
-        <div id="result-div" style="display: none;">
-            <span>
-                Base64: 
-            </span>
-            <div id="base64-text" style="border: 1px solid; width: 300px; white-space: nowrap; overflow: scroll; text-overflow: clip;" >
-                <!-- will contain the base64 text-->
-            </div>
-
-            <!-- allows the user to download the generated file -->
-            <button onclick="download_encrypted()">Download Encrypted</button>
+        <div id="results">
         </div>
 
-
         <script type='text/javascript'>
-
             // encrypt the given text using the provided password
             function encrypt_text(dec_text, pass) {
                 return CryptoJS.AES.encrypt(dec_text, pass);
@@ -39,55 +27,72 @@
             }
 
             function encodeImage() {
-                if ($("#inputFile").val() == '' || $("#pass").val() == '') {
+                var inp = document.getElementById("inputFiles");
+                if (inp.files.length == 0 || $("#pass").val() == '') {
                     alert("لطفا همه ی فیلد ها را پر کنید");
                     return;
                 }     
                 
                 var pass = $("#pass").val()                
-                var filesSelected = document.getElementById("inputFile").files;
+                var filesSelected = inp.files;
+                $("#inputs").hide();
                 if (filesSelected.length > 0) {
-                    var fileToLoad = filesSelected[0];
-                    var fileReader = new FileReader();
-                    fileReader.onload = function(fileLoadedEvent) {
-                        // show the result div
-                        $("#result-div").show();
-                        $("#inputs").hide();
+                    for (i = 0; i < inp.files.length; i++) {
+                        var fileToLoad = filesSelected[i];
+                        var fileReader = new FileReader();
+                        const fixed_index = i // accessing 'i' in callbacks results in seeing wrong values 
+                        fileReader.onload = function(fileLoadedEvent) {
+                            // create base64
+                            var srcData = fileLoadedEvent.target.result;                            
+                            newItem = $('<div></div>')
+                                .attr('id', 'output' + fixed_index)
+                                .append($('<span></span>').text('base64'))
+                                .append($('<div></div>')
+                                        .attr('id', 'base64-' + fixed_index)
+                                        .css({border: '1px solid', width: '300px', overflow: 'scroll'})
+                                        .css('white-space', 'nowrap')
+                                        .css('text-overflow', 'clip')
+                                        .html(srcData)
+                                       )
+                                .append($('<button></button>')
+                                        .click(function() {download_encrypted(fixed_index)})
+                                        .html("Download Encrypted")
+                                       )
+                            
+                            $('#results').append(newItem);
 
-                        // create base64
-                        var srcData = fileLoadedEvent.target.result;
-                        $("#base64-text").html(srcData);
-                        console.log("Converted Base64 version is " + $("#base64-text").html());
+                            // encrypt it 
+                            enc_text = encrypt_text(srcData, pass);
 
-                        // encrypt it 
-                        enc_text = encrypt_text(srcData, pass);
-
-                        // draw picture back from the encrypted version
-                        decrypted_content = show_decryptted_image_from_encrypted_text(enc_text, pass)
+                            // draw picture back from the encrypted version
+                            decrypted_content = show_decryptted_image_from_encrypted_text(enc_text, pass)
+                        }
+                        fileReader.readAsDataURL(fileToLoad);
                     }
-                    fileReader.readAsDataURL(fileToLoad);
                 }
             }
 
             function show_decryptted_image_from_encrypted_text(encrypted_text, pass){
                 content = decrypt_text(encrypted_text, pass)
-                var image = new Image();
+                var image = new Image(200); // 200 is optional width
                 image.src = content;
                 document.body.appendChild(image);
             }
 
-            function download_encrypted() {
+            function download_encrypted(pic_index) {
+                // retrieve the password
                 var pass = $("#pass").val();
-
+                
                 // output filename
-                filename = $("#inputFile").prop('files')[0].name + ".txt";
+                filename = $("#inputFiles").prop('files')[pic_index].name + ".txt";
 
                 // first convert image to base64
-                content = $("#base64-text").html();
+                content = $("#base64-"+pic_index).html();
 
                 // then encrypt
                 enc_content = encrypt_text(content, pass);
-
+                
+                // download the file
                 var element = document.createElement('a');
                 element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(enc_content));
                 element.setAttribute('download', filename);
