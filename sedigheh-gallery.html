@@ -1,0 +1,208 @@
+---
+title: ممنون بابت نظر
+permalink: /sedigheh/gallery.html
+layout: default
+---
+
+<script>
+	// change selected menu item to Divar
+	set_selected_menu("start-gallery")
+</script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/rollups/aes.js" integrity="sha256-/H4YS+7aYb9kJ5OKhFYPUjSJdrtV6AeyJOtTkw6X72o=" crossorigin="anonymous"></script>
+<script src="/assets/js/spotlight-modified.min.js"></script>
+<!--<script type="module" src="/assets/js/js/spotlight.js"></script>-->
+<link rel="stylesheet" href="/assets/css/spotlight.min.css">
+<style>
+    html, body{
+        width: 100%;
+        height: 100%;
+        margin: 0;
+        padding: 0;
+        border: 0;
+        font-family: Aral, Helvetica, sans-serif;
+        text-align: center;
+        -webkit-tap-highlight-color: rgba(0,0,0,0);
+        background: #f8f9fa;
+    }
+    main{
+        position: relative;
+        max-width: 800px;
+        margin: auto;
+    }
+    a, b{
+        display: inline-block;
+        color: #6c757d;
+        text-decoration: none;
+        font-weight: 600;
+    }
+    b{
+        padding: 10px;
+    }
+    button{
+        padding: 5px 10px;
+    }
+
+    .spotlight img,
+        .image{
+            width: 29vw;
+            height: auto;
+            max-width: 300px;
+            margin: 1vmin 1vmin;
+            content-visibility: auto;
+        }
+    .image{
+        display: inline-block;
+        height: 20vw;
+        max-height: 200px;
+        background-position: center center;
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+    .spotlight img{
+        height: 20vw;
+        max-height: 200px;
+        object-fit: cover;
+    }
+    .spotlight{
+        cursor: pointer;
+        display: inline-block;
+    }
+
+    hr{
+        border: 0;
+        border-bottom: 1px solid #ccc;
+        margin-bottom: 20px;
+        padding-top: 20px;
+    }
+    h1 img{
+        width: 500px;
+        max-width: 70vw;
+    }
+    label, button{
+        display: inline-block;
+        padding: 5px 7px;
+        margin: 3px 1px;
+        border: 1px solid #ddd;
+        background: #e9ecef;
+        font-size: 12px;
+        line-height: 20px;
+        vertical-align: middle;
+        cursor: pointer;
+        border-radius: 5px;
+    }
+    button{
+        border:0;
+        outline: 0;
+        padding: 8px 18px;
+        font-weight: 400;
+        font-size: 15px;
+        background-color: #6c757d;
+        color: #fff;
+    }
+    label input{
+        float: left;
+        margin-right: 7px;
+        margin-left: 2px;
+    }
+    pre{
+        display: inline-block;
+        margin: auto;
+        text-align: left;
+        width: 100%;
+        max-width: calc(100vw - 1.7em);
+    }
+    pre code.hljs{
+        background: #fff;
+        padding: 1em 1.5em;
+        border-radius: 10px;
+        width: 100%;
+        max-width: calc(100vw - 1.7em);
+    }
+
+    a[data-media="node"]{
+        width: 29vw;
+        max-width: 300px;
+        margin: 1vmin 1vmin;
+        display: inline-block;
+        height: 20vw;
+        max-height: 200px;
+    }
+    a[data-media="node"] img{
+        float: left;
+        width: 33.33%;
+        margin: 0;
+        object-fit: cover;
+        height: 100%;
+        padding: 0;
+    }
+</style>
+
+
+<div class="center gallery" id="gallery-box">
+<!--
+    <a class="spotlight" href="/assets/img/1.jpg" data-caption="salam">
+        <img src="img/thumbs/1.jpg">
+    </a>
+    <a class="spotlight" href="img/2.jpg" data-caption="Caption 1">
+        <img src="img/thumbs/2.jpg">
+    </a>
+    <a class="spotlight" href="img/3.jpg" data-caption="Caption 1">
+        <img src="img/thumbs/3.jpg">
+    </a>
+-->
+</div>
+
+
+<script>
+    function decrypt_text(enc_text, pass) {
+        return CryptoJS.AES.decrypt(enc_text, pass).toString(CryptoJS.enc.Utf8);
+    }
+
+    function get_decryptted_file_content(file_addr, pass){
+        console.log(file_addr)
+        $.get( file_addr, function( data ) {
+            splits = file_addr.split('/');
+            filename = splits[splits.length-1];
+            content = decrypt_text(data, pass);
+            
+            // $( "#text" ).html( content );
+//            console.log(content)
+            image = new Image();
+            image.src = content;
+//            document.body.appendChild(image);
+            elem = $('<a></a>')
+                .addClass('spotlight')
+                .attr({href:'/assets/gallery/full/full-'+filename})
+                .append($('<img/>')
+                        .attr({src:content})
+                        .css({width: "10vw", height: "auto"})
+                );
+            $('#gallery-box').append(elem);
+            // return content
+        });
+    }
+//     | sort %
+//    {% for image in site.static_files %}
+//        {% if image.path contains '/encrypted' %}        
+//            get_decryptted_file_content("{{ image.path }}", code)
+//        {% endif %}
+//    {% endfor %}
+    
+    const queryString = window.location.search;
+    const urlParams = new URLSearchParams(queryString);
+    if (!urlParams.has('code')) {
+        console.log('no code');
+    } else {
+        const code = urlParams.get('code')
+        codediv = $('<div id="codediv"></div>').hide().text(code)
+        $("body").append(codediv)
+        get_decryptted_file_content("/assets/gallery/encrypted/1.txt", code)
+        get_decryptted_file_content("/assets/gallery/encrypted/2.txt", code)
+        get_decryptted_file_content("/assets/gallery/encrypted/3.txt", code)
+        get_decryptted_file_content("/assets/gallery/encrypted/4.txt", code)
+        get_decryptted_file_content("/assets/gallery/encrypted/5.txt", code)
+        get_decryptted_file_content("/assets/gallery/encrypted/6.txt", code)
+        get_decryptted_file_content("/assets/gallery/encrypted/7.txt", code)
+    }
+</script>	

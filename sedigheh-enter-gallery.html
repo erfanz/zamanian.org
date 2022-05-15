@@ -40,15 +40,10 @@ onfocus="this.removeAttribute('readonly');"/> <br />
             url : url,
             dataType : "html",
             success : function(data) {
-
-                window.location= url;
-
+                window.location= '/sedigheh/gallery.html?code='+pwd;
             },
             error : function(xhr, ajaxOptions, thrownError) {
-
-
                 parent.location.hash= hash;
-
                 //$("#wrongPassword").show();
                 $("#password").attr("placeholder","رمز نادرست");
                 $("#password").val("");
