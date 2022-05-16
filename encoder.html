@@ -118,10 +118,15 @@
                 document.body.removeChild(element);
             }
             
-            function downloadAll() {
+            function sleep(ms) {
+                return new Promise(resolve => setTimeout(resolve, ms));
+            }
+            
+            async function downloadAll() {
                 var inp = document.getElementById("inputFiles");
                 for (i = 0; i < inp.files.length; i++) {
                     download_encrypted(i);
+                    await sleep(500);
                 }
                 alert("Download complete");
             }
