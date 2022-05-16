@@ -11,8 +11,12 @@
             <br/>
             <button onclick="encodeImage()">رمزنگاری کن</button>
         </div>
+        
+        
 
-        <div id="results">
+        <div id="results" style="display: none;">
+            <div id="progress"></div>
+            <button id="download-all" onclick="downloadAll()" style="margin-bottom: 30px;">Download all</button>
         </div>
 
         <script type='text/javascript'>
@@ -36,12 +40,24 @@
                 var pass = $("#pass").val()                
                 var filesSelected = inp.files;
                 $("#inputs").hide();
+                $("#download-all").prop("disabled", true).show();
+                $("#results").show();
+                
                 if (filesSelected.length > 0) {
+                    var processed_cnt = 0;
                     for (i = 0; i < inp.files.length; i++) {
+                        var fixed_index = i // accessing 'i' in callbacks results in seeing wrong values 
                         var fileToLoad = filesSelected[i];
                         var fileReader = new FileReader();
-                        const fixed_index = i // accessing 'i' in callbacks results in seeing wrong values 
                         fileReader.onload = function(fileLoadedEvent) {
+                            // update progress report
+                            processed_cnt++;
+                            $('#progress').html("Processing file " + processed_cnt + "/" + filesSelected.length)
+                            if (processed_cnt == filesSelected.length) {
+                                $("#download-all").prop("disabled", false);
+                            }
+                            
+
                             // create base64
                             var srcData = fileLoadedEvent.target.result;                            
                             newItem = $('<div></div>')
@@ -100,6 +116,14 @@
                 document.body.appendChild(element);
                 element.click();
                 document.body.removeChild(element);
+            }
+            
+            function downloadAll() {
+                var inp = document.getElementById("inputFiles");
+                for (i = 0; i < inp.files.length; i++) {
+                    download_encrypted(i);
+                }
+                alert("Download complete");
             }
         </script>
 
