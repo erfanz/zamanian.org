@@ -182,27 +182,35 @@ layout: default
             // return content
         });
     }
-//     | sort %
-//    {% for image in site.static_files %}
-//        {% if image.path contains '/encrypted' %}        
-//            get_decryptted_file_content("{{ image.path }}", code)
-//        {% endif %}
-//    {% endfor %}
     
     const queryString = window.location.search;
     const urlParams = new URLSearchParams(queryString);
     if (!urlParams.has('code')) {
         console.log('no code');
     } else {
+        // this is to access the code from inside spotlight library
         const code = urlParams.get('code')
         codediv = $('<div id="codediv"></div>').hide().text(code)
         $("body").append(codediv)
-        get_decryptted_file_content("/assets/gallery/encrypted/1.txt", code)
-        get_decryptted_file_content("/assets/gallery/encrypted/2.txt", code)
-        get_decryptted_file_content("/assets/gallery/encrypted/3.txt", code)
-        get_decryptted_file_content("/assets/gallery/encrypted/4.txt", code)
-        get_decryptted_file_content("/assets/gallery/encrypted/5.txt", code)
-        get_decryptted_file_content("/assets/gallery/encrypted/6.txt", code)
-        get_decryptted_file_content("/assets/gallery/encrypted/7.txt", code)
+        
+        // now go through all images and add them here
+        // TODO: jekyll produces a lot of unnecessary white spaces.
+        // In jekyll 4, this problem is solved
+        // (https://shopify.github.io/liquid/basics/whitespace/),
+        // but github pages still is not supporting version 4.
+        // Fix this once the support is added.
+        {% for image in site.static_files %}
+            {% if image.path contains '/gallery/thumbs/' %}        
+                get_decryptted_file_content("{{ image.path }}", code)
+            {% endif %}
+        {% endfor %}
+        
+//        get_decryptted_file_content("/assets/gallery/encrypted/1.txt", code)
+//        get_decryptted_file_content("/assets/gallery/encrypted/2.txt", code)
+//        get_decryptted_file_content("/assets/gallery/encrypted/3.txt", code)
+//        get_decryptted_file_content("/assets/gallery/encrypted/4.txt", code)
+//        get_decryptted_file_content("/assets/gallery/encrypted/5.txt", code)
+//        get_decryptted_file_content("/assets/gallery/encrypted/6.txt", code)
+//        get_decryptted_file_content("/assets/gallery/encrypted/7.txt", code)
     }
 </script>	
