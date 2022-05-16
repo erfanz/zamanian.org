@@ -16,7 +16,7 @@
 
         <div id="results" style="display: none;">
             <div id="progress"></div>
-            <button id="download-all" onclick="downloadAll()" style="margin-bottom: 30px;">Download all</button>
+            <button id="download-all" onclick="downloadAll()" style="   margin-bottom: 30px;">Download all</button>
         </div>
 
         <script type='text/javascript'>
@@ -46,7 +46,7 @@
                 if (filesSelected.length > 0) {
                     var processed_cnt = 0;
                     for (i = 0; i < inp.files.length; i++) {
-                        var fixed_index = i // accessing 'i' in callbacks results in seeing wrong values 
+                        const fixed_index = i // accessing 'i' in callbacks results in seeing wrong values 
                         var fileToLoad = filesSelected[i];
                         var fileReader = new FileReader();
                         fileReader.onload = function(fileLoadedEvent) {
