@@ -19,6 +19,10 @@ layout: default
 	}
 </style>
 
+<div class="error center fa-text" id="wrong-pass">
+    رمز عبوری وارد نشده است.
+</div>
+
 
 <div class="center gallery" id="gallery-box">
 <!--
@@ -67,8 +71,7 @@ layout: default
     const queryString = window.location.search;
     const urlParams = new URLSearchParams(queryString);
     if (!urlParams.has('code')) {
-        
-        console.log('no code');
+        $('#wrong-pass').show();
     } else {
         // this is to access the code from inside spotlight library
         const code = urlParams.get('code')

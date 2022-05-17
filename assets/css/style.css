@@ -72,6 +72,14 @@ div.info-message {
 	-webkit-font-smoothing: antialiased;
 }
 
+/* for showing errors to user */
+.error {
+    display: none; /* default is not show */
+    background-color: #fa2c59;
+    color: #f8ff7a;
+    font-size: 20px;
+}
+
 
 /* Top Menu */
 nav.topmenu {
