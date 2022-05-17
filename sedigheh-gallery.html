@@ -9,7 +9,7 @@ layout: default
 	set_selected_menu("start-gallery")
 </script>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/rollups/aes.js" integrity="sha256-/H4YS+7aYb9kJ5OKhFYPUjSJdrtV6AeyJOtTkw6X72o=" crossorigin="anonymous"></script>
+<script src="/assets/js/aes.js" integrity="sha256-/H4YS+7aYb9kJ5OKhFYPUjSJdrtV6AeyJOtTkw6X72o=" crossorigin="anonymous"></script>
 <script src="/assets/js/spotlight-modified.min.js"></script>
 <!--<script type="module" src="/assets/js/js/spotlight.js"></script>-->
 <link rel="stylesheet" href="/assets/css/spotlight.min.css">
@@ -67,6 +67,7 @@ layout: default
     const queryString = window.location.search;
     const urlParams = new URLSearchParams(queryString);
     if (!urlParams.has('code')) {
+        
         console.log('no code');
     } else {
         // this is to access the code from inside spotlight library
