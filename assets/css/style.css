@@ -80,6 +80,13 @@ div.info-message {
     font-size: 20px;
 }
 
+/* for showing info msgs to user */
+.info {
+    background-color: #436807;
+    color: #effbff;
+    font-size: 17px;
+}
+
 
 /* Top Menu */
 nav.topmenu {

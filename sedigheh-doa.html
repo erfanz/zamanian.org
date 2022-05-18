@@ -9,8 +9,19 @@ layout: default
 	set_selected_menu("start-doa")
 </script>
 
+<div id="is-loading" class="info center fa-text">
+    صفحه در حال بارگزاری است، لطفا منتظر بمانید.
+</div>
 
 <div style="overflow: hidden; margin: 15px auto; max-width: 536px;">
-    <iframe scrolling="no" src="https://fatehe-online.ir/290155" style="border: 0px none; margin-left: -185px; margin-top: -373px; margin-bottom: -100px; height: 1559px; width: 780px;">
+    <iframe id="doa-section" scrolling="no" src="https://fatehe-online.ir/290155" style="display:none; border: 0px none; margin-left: -185px; margin-top: -373px; margin-bottom: -100px; height: 1559px; width: 780px;">
     </iframe>
 </div>
+
+<script>
+        var ifr = document.getElementById('doa-section');
+        ifr.onload=function(){
+            $('#is-loading').hide();
+            $('#doa-section').show();
+        };
+</script>
