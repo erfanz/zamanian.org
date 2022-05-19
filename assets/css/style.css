@@ -30,11 +30,23 @@
 	text-align: center;
 }
 
-#footer {
-	position: fixed;
-	bottom: 0;
-	width: 100%;
+/* for mobile screens, put the menu on the very bottom */
+@media only screen and (max-width: 600px) {
+    #footer {
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+    }
 }
+
+/* for desktops, put the menu below the content div */
+@media only screen and (min-width: 601px) {
+    #footer {
+        margin-top: 20px;
+        width: 100%;
+    }
+}
+
 
 .fa-text {
 	direction: rtl;
