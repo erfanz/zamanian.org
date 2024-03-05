@@ -2,7 +2,7 @@
 	ثبت دل نوشته
 </h1>
 <div class = "center fa-text" style="width: 300px;">
-	<form method="GET" class="contact-form" id="comment-form" action="http://sedigh.zamanian.net/makePRForZamanianOrg.php">	
+	<form method="POST" class="contact-form" id="comment-form" action="http://sedigh.zamanian.net/makePRForZamanianOrg.php">	
         <input name="redirect" type="hidden" value="http://www.zamanian.org/sedigheh/thanks-for-comment.html">
         <input name="options[slug]" type="hidden" value="{{ page.slug }}">
         <input name="key" type="hidden" value="1234">
@@ -11,7 +11,7 @@
             <!-- placeholder is needed to check if the field is empty or not -->
 			<input placeholder=" " name="name" id="name" class="inputf user-text" autocomplete="off" type="text">
 			<label class="label" for="name">
-				ننام (اختیاری)
+				نام (اختیاری)
 			</label>
 		</div>
 
