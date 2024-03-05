@@ -1,32 +1,109 @@
 <h1 class="form-title">
 	ثبت دل نوشته
 </h1>
+
+<style>
+    @keyframes throbbing {
+        0% { background-color: rgba(107, 23, 116, 1); }
+        10% { background-color: rgba(107, 23, 116, 0.95); }
+        20% { background-color: rgba(107, 23, 116, 0.90); }
+        30% { background-color: rgba(107, 23, 116, 0.85); }
+        40% { background-color: rgba(107, 23, 116, 0.80); }
+        50% { background-color: rgba(107, 23, 116, 0.75); }
+        60% { background-color: rgba(107, 23, 116, 0.80); }
+        70% { background-color: rgba(107, 23, 116, 0.85); }
+        80% { background-color: rgba(107, 23, 116, 0.90); }
+        90% { background-color: rgba(107, 23, 116, 0.95); }
+        100% { background-color: rgba(107, 23, 116, 1); }
+    }
+
+    .throbbing-div {
+        animation: throbbing 1s infinite;
+        color: aliceblue;
+        border-radius: 25px;
+        padding: 10px;
+    }
+</style>
+    
 <div class = "center fa-text" style="width: 300px;">
-	<form method="POST" class="contact-form" id="comment-form" action="https://mystaticmaninstance.herokuapp.com/v3/entry/github/erfanz/zamanian.org/master/wallposts">	
-        <input name="options[redirect]" type="hidden" value="http://www.zamanian.org/sedigheh/thanks-for-comment.html">
-        <input name="options[slug]" type="hidden" value="{{ page.slug }}">
-		
+  <div id="errorBox"></div>
+  <div id="waitBox" class="throbbing-div" style="display: none;">لطفا کمی منتظر بمان. دل نوشته ات در حال ارسال است.</div>
+  
+	<form class="contact-form" id="comment-form">	
+    <input name="key" type="hidden" value="12344321">
+        
 		<div class="form-field">
             <!-- placeholder is needed to check if the field is empty or not -->
-			<input placeholder=" " name="fields[name]" id="name" class="inputf user-text" autocomplete="off" type="text">
+			<input placeholder=" " name="name" id="name" class="inputf user-text" autocomplete="off" type="text">
 			<label class="label" for="name">
 				نام (اختیاری)
 			</label>
 		</div>
 
 		<div class="form-field">
-			<textarea placeholder=" " name="fields[message]" id="message" class="textf user-text" rows="4" cols="50" autocomplete="off"></textarea>
+			<textarea placeholder=" " name="message" id="message" class="textf user-text" rows="4" cols="50" autocomplete="off"></textarea>
 			<label class="label" for="message">
 				پیام
 			</label>	  
 		</div>
 		<div class="form-field center" style="align-items: center; justify-content: center; display: flex;">
-		    <button type="submit" class="submit-btn">
+		    <button class="submit-btn" id="submitButton" onclick="submitComment(event)">
 				برای ثبت، اینجا را کلیک کن
 				<br/>
 				(و چند ثانیه منتظر واستا)
 		    </button>
 		</div>
 	</form>
+  
+  <script>
+    function submitComment() {
+      event.preventDefault(); // Prevent the default form submission
+      
+      // disable input fields and the button
+      var nameInput = document.getElementById('name');
+      var msgInput = document.getElementById('message');
+      var button = document.getElementById('submitButton');
+      nameInput.readOnly = true; 
+      msgInput.readOnly = true; 
+      button.disabled = true;
+            
+      // show the "wait" box, and make the error box disappear
+      var waitDiv = document.getElementById('waitBox');
+      var errorDiv = document.getElementById('errorBox');
+      waitDiv.style.display = 'block';
+      errorDiv.style.display = 'none';
+        
+      var formData = new FormData(document.getElementById('comment-form'));
+
+      fetch('http://sedigh.zamanian.net/makePRForZamanianOrg.php', {
+          method: 'POST',
+          body: formData
+      })
+      .then(response => response.json())
+      .then(data => {
+        if (data.success == true) {
+          // Redirect to a new page after successful submission
+          window.location.href = 'thanks-for-comment.html';
+        } else {
+          waitDiv.style.display = 'none';
+          console.error("Error: ", data.error_msg);
+          errorDiv.innerHTML = 'خطا در ارسال دل نوشته';
+          errorDiv.style.display = 'block';
+          nameInput.readOnly = false; 
+          msgInput.readOnly = false; 
+          button.disabled = false;
+        }
+      })
+      .catch(error => {        
+        waitDiv.style.display = 'none';
+        console.error('Error:', error)
+        errorDiv.innerHTML = 'خطا در ارسال دل نوشته';
+        errorDiv.style.display = 'block';
+        nameInput.readOnly = false; 
+        msgInput.readOnly = false; 
+        button.disabled = false;
+      });
+    }
+  </script>
 
 </div>
