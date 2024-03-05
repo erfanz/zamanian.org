@@ -2,20 +2,21 @@
 	ثبت دل نوشته
 </h1>
 <div class = "center fa-text" style="width: 300px;">
-	<form method="POST" class="contact-form" id="comment-form" action="https://mystaticmaninstance.herokuapp.com/v3/entry/github/erfanz/zamanian.org/master/wallposts">	
-        <input name="options[redirect]" type="hidden" value="http://www.zamanian.org/sedigheh/thanks-for-comment.html">
+	<form method="POST" class="contact-form" id="comment-form" action="http://sedigh.zamanian.net/makePRForZamanianOrg.php">	
+        <input name="redirect" type="hidden" value="http://www.zamanian.org/sedigheh/thanks-for-comment.html">
         <input name="options[slug]" type="hidden" value="{{ page.slug }}">
-		
+        <input name="key" type="hidden" value="1234">
+        
 		<div class="form-field">
             <!-- placeholder is needed to check if the field is empty or not -->
-			<input placeholder=" " name="fields[name]" id="name" class="inputf user-text" autocomplete="off" type="text">
+			<input placeholder=" " name="name" id="name" class="inputf user-text" autocomplete="off" type="text">
 			<label class="label" for="name">
-				نام (اختیاری)
+				ننام (اختیاری)
 			</label>
 		</div>
 
 		<div class="form-field">
-			<textarea placeholder=" " name="fields[message]" id="message" class="textf user-text" rows="4" cols="50" autocomplete="off"></textarea>
+			<textarea placeholder=" " name="message" id="message" class="textf user-text" rows="4" cols="50" autocomplete="off"></textarea>
 			<label class="label" for="message">
 				پیام
 			</label>	  
